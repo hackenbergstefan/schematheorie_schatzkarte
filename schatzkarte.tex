@@ -1,0 +1,367 @@
+\documentclass[%
+%a5paper,                           % alle weiteren Papierformat einstellbar
+%landscape,                     % Querformat
+10pt,                               % Schriftgr§§e (12pt, 11pt (Standard))
+%BCOR1cm,                           % Bindekorrektur, bspw. 1 cm
+%DIVcalc,                           % f§hrt die Satzspiegelberechnung neu aus
+%                                             s. scrguide 2.4
+%twoside,                           % Doppelseiten
+%twocolumn,                     % zweispaltiger Satz
+halfparskip*,               % Absatzformatierung s. scrguide 3.1
+%headsepline,                   % Trennline zum Seitenkopf  
+%footsepline,                   % Trennline zum Seitenfu§
+%titlepage,                     % Titelei auf eigener Seite
+%normalheadings,            % §berschriften etwas kleiner (smallheadings)
+%idxtotoc,                      % Index im Inhaltsverzeichnis
+%liststotoc,                    % Abb.- und Tab.verzeichnis im Inhalt
+%bibtotoc,                      % Literaturverzeichnis im Inhalt
+%abstracton,                    % §berschrift §ber der Zusammenfassung an   
+%leqno,                         % Nummerierung von Gleichungen links
+%fleqn,                             % Ausgabe von Gleichungen linksb§ndig
+%draft                              % §berlangen Zeilen in Ausgabe gekennzeichnet
+%DIV = 14,
+%monochrome,                        % schwarz wei§ output
+]
+{scrartcl}
+
+\usepackage[
+    papersize={1189mm,1682mm},
+    landscape,
+    top=0cm,
+    bottom=0cm,
+    left=0cm,
+    right=0cm
+]{geometry}
+
+
+
+%% Deutsche Anpassungen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath,amssymb,mathtools,stmaryrd}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+%\usepackage[ansinew]{inputenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{lmodern} %Type1-Schriftart f§r nicht-englische Texte
+
+\usepackage[nomath]{kpfonts}
+\renewcommand*\familydefault{\sfdefault}
+
+\usepackage{tikz}
+\usetikzlibrary{mindmap,trees, shadows, backgrounds, calc, decorations.text}
+
+
+
+%% Math abbreviations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\let\bb\mathbb
+\let\cal\mathcal
+\let\fr\mathfrak
+\newcommand{\F}{\cal{F}}
+\newcommand{\G}{\cal{G}}
+\renewcommand{\O}{\cal{O}}
+\renewcommand{\L}{\cal{L}}
+\newcommand{\U}{\cal{U}}
+\newcommand{\M}{\cal{M}}
+\newcommand{\R}{\bb{R}}
+\newcommand{\N}{\bb{N}}
+\newcommand{\C}{\bb{C}}
+\newcommand{\Q}{\bb{Q}}
+\newcommand{\Z}{\bb{Z}}
+\newcommand{\A}{\bb{A}}
+\renewcommand{\P}{\bb{P}}
+\newcommand{\rest}[1]{\big|_{#1}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\fis}{^{\#}}
+\newcommand{\kat}[1]{\mathbf{#1}}
+\newcommand{\PSh}{\kat{PSh}}
+\newcommand{\Sh}{\kat{Sh}}
+\newcommand{\Ring}{\kat{Ring}}
+\newcommand{\Ab}{\kat{Ab}}
+\newcommand{\Top}{\kat{Top}}
+\newcommand{\Sch}{\kat{Sch}}
+\newcommand{\Moduln}[1]{#1\text{-}\kat{Mod}}
+\newcommand{\affSch}{\kat{Sch}^\kat{aff}}
+\newcommand{\op}{^\mathrm{op}}
+\newcommand{\m}{\fr{m}}
+\newcommand{\p}{\fr{p}}
+\newcommand{\q}{\fr{q}}
+\renewcommand{\a}{\fr{a}}
+\renewcommand{\b}{\fr{b}}
+\newcommand{\ideal}{\vartriangleleft}
+\newcommand{\immersion}{\ \tikz[baseline=-0.6ex]{
+    \draw[/tikz/commutative diagrams/immersion,right hook->]
+        (0,0) -- +(1.3em,0);}\ }
+\newcommand{\oimmersion}{\ \tikz[baseline=-0.6ex]{
+    \draw[/tikz/commutative diagrams/offene immersion,right hook->]
+        (0,0) -- +(1.3em,0);}\ }
+\DeclareMathOperator{\Obj}{Obj}
+\DeclareMathOperator{\Morph}{Morph}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Nil}{Nil}
+\DeclareMathOperator{\Quot}{Quot}
+\DeclareMathOperator{\charak}{char}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Div}{Div}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\mult}{mult}
+\makeatletter
+\let\div\@undefined
+\makeatother
+\DeclareMathOperator{\div}{div}
+\DeclareMathOperator{\CaCl}{CaCl}
+\newcommand{\funcdef}[1]{%
+    \begin{array}[t]{>{\displaystyle}r>{\displaystyle}c>{\displaystyle}l}
+    #1\end{array}}
+\let\xto\xrightarrow
+
+\newcommand{\cl}[1]{\overline{\{#1\}}}
+
+\newcommand{\osubset}{\subseteq^\circ}
+
+
+
+%Zus§tzliche Fontgr§§en
+\newcommand{\HUGE}{\fontsize{30}{35}\selectfont}
+\newcommand{\HUGEI}{\fontsize{40}{48}\selectfont}
+\newcommand{\HUGEII}{\fontsize{60}{70}\selectfont}
+\newcommand{\HUGEIII}{\fontsize{150}{100}\selectfont}
+
+
+\colorlet{colDefinitionDraw}{green!80!black}
+\colorlet{colDefinitionFill}{green!10}
+\colorlet{colAnschauungDraw}{purple!80!black}
+\colorlet{colAnschauungFill}{purple!10}
+\colorlet{colSatzDraw}{blue!80!black}
+\colorlet{colSatzFill}{blue!10}
+
+
+%Functions
+%paperwidth = 4785mm
+%paperheight = 3383mm
+\newcommand{\distElliptical}[1]{%
+    \pgfmathparse{55*sqrt((\paperheight/\paperwidth*sin(#1))^2+cos(#1)^2)}\pgfmathresult cm}
+  %  0.8*sqrt((round(\paperheight/10)*sin(#1))^2 + (round(\paperwidth/10)*cos(#1))^2)}\pgfmathresult mm}
+
+\begin{document}
+
+%% Lengths %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\abovedisplayskip0ex plus0.5ex minus0.5ex
+\belowdisplayskip0ex plus0.5ex minus0.5ex
+\setlength{\abovedisplayshortskip}{0ex plus0.5ex minus0.5ex}
+\setlength{\belowdisplayshortskip}{0ex plus0ex minus1ex}
+
+\pagestyle{empty}
+\begin{tikzpicture}[overlay]
+\begin{scope}[shift={(0.5\paperwidth, -0.5\paperheight)}, 
+    huge mindmap,
+    root concept/.append style={
+      circular drop shadow,
+      concept color=black,
+      fill=white, line width=5ex,
+      text=black, font=\HUGEIII\bfseries\scshape,
+      inner sep=0pt,
+      text width=25cm},
+    level 1 concept/.append style={
+      circular drop shadow,
+      concept color=black,
+      fill=white, line width=2ex,
+      text=black, font=\HUGEI\scshape,
+      inner sep=0pt,
+      text width=9cm},
+    level 2 concept/.append style={
+      circular drop shadow,
+      concept color=black,
+      fill=white, line width=1ex,
+      text=black, font=\Large\scshape,
+      inner sep=0pt,
+      text width=3cm}]
+    
+    %styles
+    \pgfkeys{tikz/definition concept/.style={
+      circular drop shadow,
+      concept color=colDefinitionDraw,
+      fill=colDefinitionFill, draw=colDefinitionDraw,
+      line width=2pt,
+      inner sep=0pt,
+      text width=3cm,
+      normal},
+      %
+      tikz/satz concept/.style={
+      circular drop shadow,
+      concept color=colSatzDraw,
+      fill=colSatzFill, draw=colSatzDraw,
+      line width=2pt,
+      inner sep=0pt,
+      text width=4cm,
+      normal}
+    }
+    %sizes
+    \pgfkeys{tikz/normal/.style={font=\normalfont},
+        tikz/important/.style={font=\large},
+        tikz/very important/.style={font=\Large},
+        tikz/very very important/.style={font=\Huge},
+    }
+      
+    \node[concept, root concept] {Schema\\ theorie}
+    % §1 Lokal geringte Räume
+    child[grow=0, level distance=55cm]{ node[concept, level 1 concept] (section lokal geringte raume) {Lokal geringte Räume}
+    }
+    % §2 Affine Schemata
+    child[grow=30, level distance=55cm]{ node[concept, level 1 concept] (section affine schemata) {Affine Schemata}
+    }
+    % §3 Beispiele
+    child[grow=60, level distance=50cm]{ node[concept, level 1 concept] (section Beispiele) {Beispiele}
+    }
+    % §4 Projektive Schemata
+    child[grow=90, level distance=45cm]{ node[concept, level 1 concept] (section projektive schemata) {Projektive Schemata}
+    }
+    % §5 Eigenschaften von Schemata
+    child[grow=120, level distance=50cm]{ node[concept, level 1 concept] (section eigenschaften von schemata) {Eigen\-schaften von Schemata}
+    }
+    % §6 Faserprodukt
+    child[grow=150, level distance=55cm]{ node[concept, level 1 concept] (section faserprodukt) {Faserprodukt}
+    }
+    % §7 glatt, regulär und normal
+    child[grow=180, level distance=55cm]{ node[concept, level 1 concept] (section glatt regular normal) {Glatt, regulär und normal}
+    }
+    % §8 k-Varietäten
+    child[grow=210, level distance=55cm]{ node[concept, level 1 concept] (section k-varietaten) {$k$-Varietäten}
+    }
+    % §9 Der Punktefunktor
+    child[grow=240, level distance=50cm]{ node[concept, level 1 concept] (section punktefunktor) {Der Punktefunktor}
+    }
+    % §10 O_X Moduln
+    child[grow=270, level distance=45cm]{ node[concept, level 1 concept] (section ox moduln) {$\O_X$-Moduln}
+    }
+    % §11 Divisoren
+    child[grow=300, level distance=50cm]{ node[concept, level 1 concept] (section divisoren) {Divisoren}
+        % §11.1 Cartier-Divisoren 
+        child[grow=0, level distance=15cm] { node[concept, level 2 concept] (subsection cartier-divisoren) {Cartier-Divisoren}
+            %
+            [level 3 concept/.append style={clockwise from=0, level distance=8cm, sibling angle=50}]
+            child[definition concept]{ node[concept, definition concept] (def garbe der meromorphen funktionen) 
+                {Garbe der Keime meromorpher Funktionen}
+            }
+            child[definition concept]{ node[concept, definition concept] (def cartier-divisoren) 
+                {Cartier-Divisoren\\$\Div(X)$}
+                child[definition concept, level distance=5cm, grow=-90]{ node[concept, definition concept] (def cartier-divisoren-klassengruppe) 
+                    {Cartier-Divisoren-Klassengruppe\\$\CaCl(X)$}
+                }
+            }
+            child[satz concept]{ node[concept, satz concept] (lemma divisoren geben eindeutige untergarbe)
+                    {Divisor $D = (U_i,f_i)_{i\in I} \in \Div(X)$ gibt eindeutige Untergarbe
+                    \[\O_X(D) \subseteq \cal K_X\]
+                    mit $\O_X(D)\rest{U_i} = f_i\inv \O_X\rest{U_i}$}
+            }
+            child[satz concept]{ node[concept, satz concept] (satz rho induziert additiven ghom)
+                    {$\rho: \Div(X) \to\Pic(X),\ D \mapsto \O_X(D)$ induziert
+                    additiven Gruppenhomomorphismus
+                    \[ \rho: \CaCl(X) \hookrightarrow \Pic(X).\]
+                    Es ist $\im(\rho) = \{[\L] \in \Pic(X) \mid \L \subseteq \cal K_X\}$.}
+                child[satz concept, level distance=6cm, grow=-90]{ node[concept, satz concept] (sat x ganz dann rho iso)
+                    {$X$ ganz. Dann $\rho:\CaCl \xto{\cong}\Pic(X)$.}
+                }
+            }
+        }
+        child[grow=50, level distance=15cm] { node[concept, level 2 concept] (subsection weil-divisoren) {Weil-Divisoren}
+            %
+            [level 3 concept/.append style={clockwise from=0, level distance=8cm, sibling angle=40}]
+            child[definition concept]{ node[concept, definition concept] (def zykel)
+                {Zykel\\ $Z = \sum_{x\in X} n_x \cl x$}
+                child[definition concept, level distance=4cm]{ node[concept, definition concept] (def zykel von kodim 1)
+                    {von Kodimension 1\\
+                    $Z^1(X)$}
+                }
+            }
+            child[definition concept]{ node[concept, definition concept] (def weil-divisoren)
+                {Weil-Divisoren\\ $Z^1(X)$}
+            }
+            child[satz concept]{ node[concept, satz concept] (satz x noethersch integer f in o x eta dann f invbar in fast allen o x x)
+                {$X$ noethersch, integer. $0\neq f \in K(X) = \O_{X,\eta}$. Dann
+                $f \in \O_{X,x}^\times$ für f.a. $x$ mit $\dim\O_{X,x}=1$.}
+            }
+            child[definition concept]{ node[concept, definition concept] (def hauptdivisor zu f)
+                {Hauptdivisor \\$(f)$}
+            }
+        }
+    };
+\end{scope}
+
+
+\newcommand{\definition}[2][]{
+    \node[#1, fill=colDefinitionFill, draw=colDefinitionDraw,
+        fill opacity=0.5, draw opacity=0.5, text opacity=0.8]{#2};
+}
+
+\newcommand{\anschauung}[2][]{
+    \node[#1, fill=colAnschauungFill, draw=colAnschauungDraw,
+        fill opacity=0.5, draw opacity=0.5, text opacity=0.8]{#2};
+}
+
+%annotations
+\begin{scope}
+    \pgfkeys{/tikz/in concept/.style={at=(#1.north), yshift=-1cm)}}
+    \pgfkeys{/tikz/annotation/.style={}}
+    \node[in concept={section divisoren}, annotation] {\S 11};
+    \node[in concept={subsection cartier-divisoren}, annotation] {\S 11.1};
+\end{scope}
+
+%environments
+\begin{scope}
+    % §11.1 Cartier-Divisoren
+    \definition[at=($(def garbe der meromorphen funktionen) + (80:3cm)$), 
+        text width=5cm]
+        {\[\cal K_X := a (\cal K_X')\] mit
+        \[ \cal K_X': U \mapsto \O_X(U)[S(U)\inv]\]}
+    \anschauung[at=($(def garbe der meromorphen funktionen) + (160:4cm)$), 
+        text width=3cm]
+        {Ist $X$ ganz, so $\cal K_X= \underline{K(X)}$.}
+    \definition[at=($(def cartier-divisoren) + (45:4cm)$), 
+        text width=6cm]
+        {\[\Div(X) := \Gamma(X,\cal K_X^\times/\O_X^\times)\]
+        \emph{Hauptdivisoren} sind Bild von
+        \[\div: \cal K_X^\times(X) \to \Div(X),\ f \mapsto \div(f)\]}
+    \anschauung[at=($(def cartier-divisoren) + (-30:4.5cm)$), 
+        text width=5cm]
+        {\[D = [(U_i,f_i)_{i\in I}]\] mit 
+        $X = \cup U_i$, $f_i = \tfrac{a_i}{b_i}$, $a_i,b_i \in \O_X^\times(U_i)$
+        halmweise regulär.}
+    \definition[at=($(def cartier-divisoren-klassengruppe) + (0:4.5cm)$), 
+        text width=4cm]
+        {\[\CaCl(X) := \Div(X)\big/\sim\]
+        mit $\sim$ linearer Äquivalenz.}
+    % §11.2 Weil-Divisoren
+    \definition[at=($(def zykel) + (80:3cm)$), 
+        text width=8cm]
+        {Element von 
+        \[\Z^{(X)} := \{Z = \sum_{x\in X} n_x \cl x \mid
+            n_x \in \Z,\ n_x = 0\text{ f.a. }x\}\]}
+    \definition[at=($(def zykel von kodim 1) + (-90:2.5cm)$), 
+        text width=3cm]
+        { $\codim_X \cl x = 1$ $\Leftrightarrow$
+        $\dim \O_{X,x} = 1$}
+    \definition[at=($(def weil-divisoren) + (0:4cm)$), 
+        text width=4cm]
+        {Falls $X$ noethersch und integer.}
+    \anschauung[at=($(satz x noethersch integer f in o x eta dann f invbar in fast allen o x x) + (90:4cm)$), 
+        text width=5cm]
+        {Im affinen ist $f$ rationale Funktion. Der Nenner hat dann nur endlich viele Nullstellen
+        und damit liegt $f$ in fast allen $\O_{X,x} = A_\p$, wo $x$ keine Nullstelle des Nenners ist.}
+     \definition[at=($(def hauptdivisor zu f) + (130:3.5cm)$), 
+        text width=7cm]
+        {$X$ noethersch, normal. $f\in K(X) \setminus\{0\}$.
+        \[(f) := \sum_{x\in X\atop \dim\O_{X,x} = 1} \mult_x(f) \cdot \cl x
+        \quad \in Z^1(X)\]}
+\end{scope}
+\end{tikzpicture}
+
+\end{document}
